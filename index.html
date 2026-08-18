@@ -411,10 +411,15 @@ footer.refs .src{margin-top:1.8em; font-size:.8em; color:#98A0C6}
     var h = document.documentElement.scrollHeight - innerHeight;
     prog.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + '%';
   }
+  // 目錄：封面離開視窗後才淡入（用 IntersectionObserver，不依賴 scrollY/innerHeight）
   var toc = document.getElementById('toc'), hero = document.querySelector('header.hero');
-  function tocVis(){ toc.classList.toggle('show', scrollY > hero.offsetHeight - 80); }
-  addEventListener('scroll', function(){ onScroll(); tocVis(); }, {passive:true});
-  addEventListener('resize', tocVis); tocVis();
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){
+      toc.classList.toggle('show', !e[0].isIntersecting);
+    }, {threshold:0}).observe(hero);
+  } else {
+    toc.classList.add('show');
+  }
   addEventListener('scroll', onScroll, {passive:true});
   addEventListener('resize', onScroll);
   onScroll();
