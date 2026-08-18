@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>兒童 CRT 要壓哪裡？｜微血管回填時間的部位、門檻與教學簡化</title>
+<meta name="description" content="兒童微血管回填時間（CRT）該測指尖、手掌根還是腳掌？系統性回顧與 meta-analysis 的證據整理，以及給 EMT／EMTP 的教學簡化建議。">
+<style>
+:root{
+  --bg:#FFFFFF; --fg:#23283C; --muted:#5A6180; --card:#F1F3FA; --line:#E3E6EF;
+  --accent:#2F3C7E; --coral:#F96167; --gold:#B8860B; --amber:#C4761F;
+  --navyd:#1E2650; --barA:#2F3C7E; --barB:#F96167;
+  --blush:#FDEBEC; --blushfg:#8A4247; --blushhd:#C0272D;
+  --good:#1F7A5A;
+  --onCoral:#FFFFFF; --onCoralDim:#FFE6E7;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "PingFang TC",
+          "Heiti TC", "Microsoft JhengHei", "Noto Sans CJK TC", sans-serif;
+  --measure: 42rem;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12162A; --fg:#E7EBF7; --muted:#A6AECB; --card:#1C2240; --line:#2C3457;
+    --accent:#AEBEF5; --coral:#FF7B80; --gold:#F9E795; --amber:#E8A33D;
+    --barA:#7C8FE8; --barB:#FF7B80;
+    --blush:#33202A; --blushfg:#E3B6BA; --blushhd:#FF9A9E;
+    --good:#5FCFA6;
+    --onCoral:#2B1418; --onCoralDim:#5E2A2E;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg); font-family:var(--font);
+  font-size:clamp(15.5px, .55vw + 13.6px, 19px); line-height:1.85;
+  -webkit-font-smoothing:antialiased; text-underline-offset:2px;
+}
+
+/* ---------- 閱讀進度 ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--coral);z-index:60;transition:width .1s}
+
+/* ---------- 版心 ---------- */
+.wrap{max-width:var(--measure); margin-inline:auto; padding-inline:clamp(18px,5vw,28px)}
+.wide{max-width:56rem}
+
+/* ---------- 封面 ---------- */
+header.hero{background:var(--navyd); color:#fff; padding:clamp(48px,9vw,104px) 0 clamp(36px,6vw,72px)}
+header.hero h1{margin:0 0 .5em; font-size:clamp(28px,5.2vw,50px); line-height:1.22; font-weight:800; letter-spacing:-.01em}
+header.hero .sub{margin:0 0 1.1em; font-size:clamp(16px,2vw,22px); color:#F9E795; line-height:1.5}
+header.hero .meta{font-size:.82em; color:#98A0C6; line-height:1.9}
+header.hero a{color:#CBD4F5}
+
+/* ---------- 區段 ---------- */
+main{padding-bottom:clamp(40px,7vw,80px)}
+section{padding-top:clamp(34px,5.5vw,68px); scroll-margin-top:16px}
+h2{
+  font-size:clamp(21px,2.9vw,31px); line-height:1.35; font-weight:800;
+  color:var(--accent); margin:0 0 .7em; letter-spacing:-.005em;
+}
+h2 .n{
+  display:inline-grid; place-items:center; width:1.55em; height:1.55em; border-radius:50%;
+  background:var(--coral); color:var(--onCoral); font-size:.5em; font-weight:700;
+  vertical-align:.32em; margin-right:.6em;
+}
+h3{font-size:clamp(17px,2.1vw,22px); font-weight:700; margin:2em 0 .6em}
+p{margin:0 0 1.1em}
+strong{font-weight:700}
+a{color:inherit; text-decoration:underline; text-decoration-thickness:from-font}
+a:hover{color:var(--coral)}
+.lede{font-size:1.08em; color:var(--muted)}
+
+/* ---------- 卡片與方塊 ---------- */
+.note{
+  background:var(--card); border-radius:14px; padding:clamp(16px,2.6vw,26px);
+  margin:1.6em 0; font-size:.95em;
+}
+.note.good{background:color-mix(in srgb, var(--good) 12%, var(--bg)); border:1px solid color-mix(in srgb, var(--good) 32%, transparent)}
+.note.warn{background:var(--blush); color:var(--blushfg)}
+.note.warn b{color:var(--blushhd)}
+.note h4{margin:0 0 .5em; font-size:1.05em; font-weight:700; color:var(--accent)}
+.note.warn h4{color:var(--blushhd)}
+
+/* 🔥 紅底金框金句 */
+.pull{
+  margin:1.9em 0; background:#C00000; border:2px solid #FFC000; border-radius:14px;
+  padding:clamp(13px,2.2vw,20px) clamp(16px,2.6vw,24px);
+  color:#fff; font-weight:700; font-size:clamp(16px,2.1vw,21px); line-height:1.5;
+  box-shadow:0 3px 14px rgba(0,0,0,.22);
+}
+.pull .fire{font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif}
+
+/* ---------- 表格 ---------- */
+.tablewrap{overflow-x:auto; margin:1.5em 0; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; min-width:34rem; font-size:.9em}
+th,td{text-align:left; padding:.72em .9em; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{font-weight:700; color:var(--accent); border-bottom:2px solid var(--line); white-space:nowrap}
+tbody tr.hi td{background:color-mix(in srgb, var(--coral) 12%, var(--bg))}
+td.num{font-weight:700; white-space:nowrap; font-size:1.15em}
+td.num.on{color:var(--coral)}
+
+/* ---------- 步驟 / 統計 ---------- */
+.steps{list-style:none; margin:1.5em 0; padding:0; display:grid; gap:.7em}
+.steps li{display:flex; gap:.85em; align-items:baseline; background:var(--card);
+          border-radius:12px; padding:.75em 1em}
+.steps b{flex:0 0 auto; display:inline-grid; place-items:center; width:1.9em; height:1.9em;
+         border-radius:50%; background:var(--accent); color:var(--bg); font-size:.8em}
+.steps .k{font-weight:700; margin-right:.5em; color:var(--coral); font-size:1.1em}
+
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.8em; margin:1.5em 0}
+.stats div{background:var(--card); border-radius:12px; padding:1em}
+.stats b{display:block; font-size:clamp(24px,3.4vw,34px); color:var(--coral); line-height:1.15}
+.stats span{font-size:.85em; color:var(--muted)}
+
+.compare{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1em; margin:1.6em 0}
+.compare > div{border-radius:14px; padding:clamp(16px,2.4vw,24px)}
+.compare .warm{background:var(--blush)}
+.compare .cool{background:var(--navyd); color:#fff}
+.compare h4{margin:0 0 .15em; font-size:1.02em; font-weight:700}
+.compare .big{font-size:clamp(38px,6.5vw,62px); font-weight:800; line-height:1.05; margin:.25em 0}
+.compare .warm .big{color:var(--coral)} .compare .cool .big{color:#F9E795}
+.compare small{font-size:.85em; opacity:.8}
+
+.bands{display:grid; gap:.6em; margin:1.5em 0}
+.band{display:flex; gap:.9em; align-items:baseline; flex-wrap:wrap;
+      border-radius:12px; padding:.8em 1.1em; font-size:.95em}
+.band .v{font-weight:800; font-size:1.15em; flex:0 0 auto}
+.band .t{font-weight:700; flex:0 0 auto}
+.band .d{flex:1 1 14ch; min-width:0}
+
+.fix{display:grid; gap:.7em; margin:1.4em 0}
+.fix > div{border:1px solid var(--line); border-radius:12px; padding:.9em 1.1em}
+.fix del{color:var(--muted)} .fix .to{color:var(--muted); padding:0 .55em}
+.fix ins{color:var(--good); font-weight:700; text-decoration:none}
+.fix p{margin:.35em 0 0; font-size:.88em; color:var(--muted)}
+
+figure{margin:1.8em 0}
+figure svg{width:100%; height:auto; display:block}
+figcaption{font-size:.82em; color:var(--muted); margin-top:.6em}
+
+/* ---------- 參考文獻 ---------- */
+footer.refs{background:var(--navyd); color:#D5DAF0; padding:clamp(40px,7vw,76px) 0; margin-top:clamp(40px,7vw,80px)}
+footer.refs h2{color:#fff}
+footer.refs h2 .n{background:#F96167}
+footer.refs ol{margin:0; padding-left:1.4em; font-size:.86em; line-height:1.75}
+footer.refs li{margin-bottom:.85em}
+footer.refs a{color:#D5DAF0}
+footer.refs a:hover{color:#F9E795}
+footer.refs .src{margin-top:1.8em; font-size:.8em; color:#98A0C6}
+
+/* ---------- 目錄（寬螢幕） ---------- */
+#toc{display:none}
+@media (min-width:1180px){
+  #toc{
+    display:block; position:fixed; left:clamp(16px,2.5vw,40px); top:50%; transform:translateY(-50%);
+    width:12rem; font-size:.78em; line-height:1.5; z-index:40;
+  }
+  #toc ol{list-style:none; margin:0; padding:0; display:grid; gap:.55em}
+  #toc a{display:block; color:var(--muted); text-decoration:none; padding-left:.7em;
+         border-left:2px solid var(--line); transition:color .15s, border-color .15s}
+  #toc a:hover{color:var(--fg)}
+  #toc a.on{color:var(--coral); border-left-color:var(--coral); font-weight:700}
+}
+
+@media print{
+  #prog,#toc{display:none}
+  body{font-size:11pt; background:#fff; color:#000}
+  header.hero,footer.refs,.compare .cool{background:#fff !important; color:#000 !important}
+  header.hero .sub{color:#7a5c00 !important}
+  .pull{background:#fff !important; color:#000 !important; border:2px solid #C00000}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav id="toc" aria-label="目錄"><ol>
+  <li><a href="#s1">結論</a></li>
+  <li><a href="#s2">部位與常模</a></li>
+  <li><a href="#s3">為什麼是指尖</a></li>
+  <li><a href="#s4">怎麼測</a></li>
+  <li><a href="#s5">環境溫度</a></li>
+  <li><a href="#s6">判讀門檻</a></li>
+  <li><a href="#s7">診斷效能與信度</a></li>
+  <li><a href="#s8">帶回現場</a></li>
+  <li><a href="#formats">其他版本</a></li>
+  <li><a href="#refs">參考文獻</a></li>
+</ol></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>兒童 CRT 要壓哪裡？</h1>
+    <p class="sub">微血管回填時間的部位、門檻，與教學上的簡化</p>
+    <p class="meta">
+      EMT／EMTP 教育版　·　<a href="slides.html">▶ 簡報版（可投影）</a><br>
+      證據：<a href="https://doi.org/10.1136/archdischild-2014-307079" target="_blank" rel="noopener">Fleming 2015 系統性回顧</a>與
+      <a href="https://doi.org/10.1371/journal.pone.0138155" target="_blank" rel="noopener">meta-analysis</a>｜OpenEvidence 檢索 2026-08-17
+    </p>
+  </div>
+</header>
+
+<main>
+
+<section id="s1"><div class="wrap">
+  <h2><span class="n">1</span>先講結論</h2>
+  <div class="note good">
+    <p style="margin:0"><strong>測指尖（遠端指腹、掌面），不是手掌根，也不是腳掌。</strong>只有指尖有完整常模，也只有指尖適用「2 秒」這個門檻。</p>
+  </div>
+  <p class="lede">現場對「小孩的 CRT 該壓哪裡」常見三種答案：指尖、手掌根、腳掌。三個答案都有人教，但實證只支持一個——而且更關鍵的是，<strong>不同部位的正常值不一樣</strong>，把同一個秒數門檻套到不同部位，會系統性地製造誤判。</p>
+</div></section>
+
+<section id="s2"><div class="wrap">
+  <h2><span class="n">2</span>同樣叫 CRT，部位不同、標準就不同</h2>
+  <p>Fleming 等人 2015 年在 <em>Archives of Disease in Childhood</em> 的系統性回顧，把兒童 CRT 的量測方法整理過一遍，結論很直接：不同部位的正常上限差了一倍。</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>部位</th><th>正常上限</th><th>證據狀況</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td><strong>指尖（遠端指腹、掌面）</strong></td><td class="num on">2 秒</td><td>絕大多數驗證研究採用；唯一有完整常模的部位</td></tr>
+      <tr><td>胸骨／前胸</td><td class="num">4 秒</td><td>與指尖一致性差（r = 0.18、κ = 0.35），指尖平均快 0.5 秒</td></tr>
+      <tr><td>腳掌／腳跟</td><td class="num">4 秒</td><td>研究極少，系統性回顧中與胸骨歸為同一類</td></tr>
+      <tr><td>手掌根（thenar／魚際）</td><td class="num">無常模</td><td>不是任何研究的標準部位</td></tr>
+    </tbody>
+  </table></div>
+  <p>換句話說，把「2 秒」拿去壓腳掌或手掌根，等於用一把刻度錯的尺——正常的小孩會被判成異常。手掌根更麻煩：它連可以拿來比對的正常值分佈都沒有，量出來的秒數無從解釋。</p>
+  <div class="pull"><span class="fire">🔥 </span>換部位就換標準，「2 秒」只屬於指尖。</div>
+</div></section>
+
+<section id="s3"><div class="wrap">
+  <h2><span class="n">3</span>為什麼實證站在指尖這一邊</h2>
+  <ol class="steps">
+    <li><b>1</b><span><span class="k">最多驗證研究</span>兒童 CRT 的驗證研究絕大多數以指尖進行，判讀特性、切點、干擾因素都是在這個部位上算出來的。</span></li>
+    <li><b>2</b><span><span class="k">唯一完整常模</span>其他部位缺乏可靠的正常值分佈與年齡資料。</span></li>
+    <li><b>3</b><span><span class="k">唯一適用 2 秒</span>胸骨與腳掌的正常上限約 4 秒，門檻完全不同。</span></li>
+  </ol>
+  <h3>指尖與胸骨不能互換</h3>
+  <div class="stats">
+    <div><b>0.18</b><span>兩部位相關係數 r</span></div>
+    <div><b>0.35</b><span>一致性 κ（僅 fair）</span></div>
+    <div><b>0.5 秒</b><span>指尖平均比胸骨快</span></div>
+  </div>
+  <p><a href="https://doi.org/10.1136/archdischild-2015-308519" target="_blank" rel="noopener">de Vos-Kerkhof 等人 2017 年</a>在一個大型兒科急診世代中比較了周邊（指尖）與中央（胸骨）CRT：兩者一致性只有 fair，而且<strong>高燒時與 1–5 歲兒童身上更差</strong>。同一份研究裡，不論用哪個部位、以 &gt;2 秒為異常，偵測嚴重細菌感染的表現都不好。<a href="https://doi.org/10.1136/archdischild-2012-303046" target="_blank" rel="noopener">Crook 與 Taylor 2013 年</a>的結果方向一致。</p>
+  <div class="pull"><span class="fire">🔥 </span>指尖是唯一有身分證的部位，其他都只是路人。</div>
+</div></section>
+
+<section id="s4"><div class="wrap">
+  <h2><span class="n">4</span>怎麼測：抬 → 壓 → 放 → 數</h2>
+  <ol class="steps">
+    <li><b>1</b><span><span class="k">抬</span>把手抬到心臟高度，避免重力影響回填。</span></li>
+    <li><b>2</b><span><span class="k">壓</span>壓<strong>指腹</strong>（不是指甲床）到發白，心中數 5 秒。</span></li>
+    <li><b>3</b><span><span class="k">放</span>一次放開，不要慢慢鬆。</span></li>
+    <li><b>4</b><span><span class="k">數</span>數「1001、1002」，看顏色回來沒。</span></li>
+  </ol>
+  <div class="note">
+    <h4>三個常被略過的細節</h4>
+    <p style="margin:0"><strong>壓 5 秒</strong>——壓越久，測出來越長，所以要統一。<br>
+    <strong>用碼錶</strong>——勝過心中默數，可降低觀察者間變異。<br>
+    <strong>環境 20–25°C</strong>——超出這個範圍就別報秒數（見下一節）。</p>
+  </div>
+  <p>另外，<strong>&gt;7 天的嬰幼兒沿用指尖 2 秒；新生兒（&lt;7 天）常模資料不足</strong>，這個年齡層的秒數不宜當成硬指標。</p>
+  <div class="pull"><span class="fire">🔥 </span>壓的是指腹，不是指甲——指甲會騙人。</div>
+</div></section>
+
+<section id="s5"><div class="wrap">
+  <h2><span class="n">5</span>院前最大的陷阱：環境溫度</h2>
+  <p>這是院前判讀 CRT 最容易出錯、也最少被提醒的地方。<a href="https://doi.org/10.1542/peds.92.5.699" target="_blank" rel="noopener">Gorelick 等人 1993 年在 <em>Pediatrics</em></a> 把同一群健康、沒有脫水的兒童放進兩個溫度不同的房間，其他什麼都沒變：</p>
+  <div class="compare">
+    <div class="warm">
+      <h4>25.7°C 溫暖房間</h4>
+      <small>平均 CRT 0.85 秒</small>
+      <div class="big">100%</div>
+      <small>被判為正常</small>
+    </div>
+    <div class="cool">
+      <h4>19.4°C 涼爽房間</h4>
+      <small>平均 CRT 2.39 秒</small>
+      <div class="big">31%</div>
+      <small>被判為正常</small>
+    </div>
+  </div>
+  <p>冬天、雨天、車外現場——院前的環境溫度幾乎沒有一次落在 20–25°C。發燒本身<em>不</em>影響 CRT 的判讀特性，但環境低溫會直接把秒數拉長。</p>
+  <div class="note warn">
+    <h4>實務做法</h4>
+    <p style="margin:0">先摸肢端溫度。<b>手是冰的，就別把 CRT 當成灌流指標</b>——改看 PAT（兒童評估三角）、脈搏強度、意識、心跳。</p>
+  </div>
+  <div class="pull"><span class="fire">🔥 </span>手是冰的，CRT 就只是在測氣溫。</div>
+</div></section>
+
+<section id="s6"><div class="wrap">
+  <h2><span class="n">6</span>判讀：只給學員兩個數字</h2>
+  <div class="bands">
+    <div class="band" style="background:color-mix(in srgb, var(--accent) 12%, var(--bg))">
+      <span class="v" style="color:var(--accent)">≤ 2 秒</span><span class="t">正常</span>
+      <span class="d" style="color:var(--muted)">指尖、心臟高度、溫暖環境下測得</span>
+    </div>
+    <div class="band" style="background:color-mix(in srgb, var(--amber) 16%, var(--bg))">
+      <span class="v" style="color:var(--amber)">&gt; 2 秒</span><span class="t">警訊</span>
+      <span class="d" style="color:var(--muted)">提高警覺，合併其他徵象一起看</span>
+    </div>
+    <div class="band" style="background:var(--coral); color:var(--onCoral)">
+      <span class="v">≥ 3 秒</span><span class="t">異常</span>
+      <span class="d" style="color:var(--onCoralDim)">合併其他徵象即當休克處理、儘早後送</span>
+    </div>
+  </div>
+  <div class="note">
+    <h4>門檻從未統一</h4>
+    <p style="margin:0"><strong><a href="https://doi.org/10.1136/archdischild-2014-307079" target="_blank" rel="noopener">Fleming 2015 系統性回顧</a></strong>：≥ 3 秒為異常<br>
+    <strong><a href="https://doi.org/10.1001/jama.291.22.2746" target="_blank" rel="noopener">Steiner 2004 JAMA</a></strong>：&gt; 2 秒為異常（未脫水兒童 &lt;1.5–2 秒）<br>
+    <strong>PALS／AHA、ERC、APLS、WHO、NICE</strong>：各說各話，從未統一過測量法與切點</p>
+  </div>
+  <p>課堂上不必爭論 2 秒還是 3 秒。給第一線一個可執行的兩段式判讀就夠了：兩秒起疑，三秒動手。</p>
+  <div class="pull"><span class="fire">🔥 </span>兩秒起疑，三秒動手。</div>
+</div></section>
+
+<section id="s7"><div class="wide wrap">
+  <h2><span class="n">7</span>它抓得到壞人，但放走的更多</h2>
+  <figure>
+    <svg viewBox="0 0 700 400" role="img" aria-label="CRT 延長對死亡率的特異度 92.3%、敏感度 34.6%">
+      <g stroke="var(--line)" stroke-width="1.4">
+        <line x1="47" y1="30" x2="690" y2="30"/><line x1="47" y1="63.6" x2="690" y2="63.6"/>
+        <line x1="47" y1="97.2" x2="690" y2="97.2"/><line x1="47" y1="130.8" x2="690" y2="130.8"/>
+        <line x1="47" y1="164.4" x2="690" y2="164.4"/><line x1="47" y1="198" x2="690" y2="198"/>
+        <line x1="47" y1="231.6" x2="690" y2="231.6"/><line x1="47" y1="265.2" x2="690" y2="265.2"/>
+        <line x1="47" y1="298.8" x2="690" y2="298.8"/><line x1="47" y1="332.4" x2="690" y2="332.4"/>
+      </g>
+      <line x1="47" y1="366" x2="690" y2="366" stroke="var(--muted)" stroke-width="1.6"/>
+      <g font-size="15" fill="var(--muted)" text-anchor="end">
+        <text x="40" y="34">100</text><text x="40" y="67.6">90</text><text x="40" y="101.2">80</text>
+        <text x="40" y="134.8">70</text><text x="40" y="168.4">60</text><text x="40" y="202">50</text>
+        <text x="40" y="235.6">40</text><text x="40" y="269.2">30</text><text x="40" y="302.8">20</text>
+        <text x="40" y="336.4">10</text><text x="40" y="370">0</text>
+      </g>
+      <rect x="115" y="55.9" width="179" height="310.1" fill="var(--barA)" rx="3"/>
+      <rect x="443" y="249.7" width="179" height="116.3" fill="var(--barB)" rx="3"/>
+      <g font-size="23" font-weight="700" fill="var(--fg)" text-anchor="middle">
+        <text x="204.5" y="47">92.3%</text><text x="532.5" y="240.8">34.6%</text>
+      </g>
+      <g font-size="20" fill="var(--fg)" text-anchor="middle">
+        <text x="204.5" y="396">特異度</text><text x="532.5" y="396">敏感度</text>
+      </g>
+    </svg>
+    <figcaption>CRT 延長對死亡率的判別能力（%）。資料來源：<a href="https://doi.org/10.1371/journal.pone.0138155" target="_blank" rel="noopener">Fleming 2015, PLoS One</a> meta-analysis。</figcaption>
+  </figure>
+  <div class="stats">
+    <div><b>4.49</b><span>LR+：延長 → 死亡風險約四倍</span></div>
+    <div><b>0.71</b><span>LR−：正常幾乎沒有排除力</span></div>
+  </div>
+  <p>偵測 ≥5% 脫水時也是同樣的形狀：特異度 89–94%，但敏感度在不同研究間從 0% 到 94% 劇烈擺盪。</p>
+  <div class="note warn">
+    <h4>一句話</h4>
+    <p style="margin:0"><b>延長是紅旗，正常不能排除休克。</b></p>
+  </div>
+  <h3>還有一個問題：肉眼判讀本身就不可靠</h3>
+  <p>即使把部位、壓力、時間全部標準化在指尖，觀察者間一致性也只有 fair（ICC 0.70、κ 0.54）。<a href="https://doi.org/10.1186/s12873-025-01204-0" target="_blank" rel="noopener">Meyer 等人 2025 年</a>讓 62 位觀察者（兒科醫師、護理師、助理、行政人員）看同一批影片判讀 CRT，不同職類的一致性界限落在 1.17–2.00 秒——比 2 秒與 3 秒的差距還大。作者直言，肉眼 CRT 作為兒科急症的常規測試「應被質疑」。</p>
+  <p>這正是要把 CRT 定位成<strong>輔助紅旗</strong>而非單獨判準的理由，也是為什麼在教學上愈簡單、愈統一，愈可能測得準。</p>
+  <div class="pull"><span class="fire">🔥 </span>CRT 正常，只代表這一項沒事，不代表這個小孩沒事。</div>
+</div></section>
+
+<section id="s8"><div class="wrap">
+  <h2><span class="n">8</span>帶回現場：三條口訣、兩個要改的習慣</h2>
+  <p><strong>只教一個部位：指尖。</strong>三個部位並列教，學員記不住哪個配哪個門檻，害處大於好處。</p>
+  <h3>三條口訣</h3>
+  <ol class="steps">
+    <li><b>1</b><span><span class="k">手冰不算數</span>肢端冰冷或現場氣溫低，改看 PAT、脈搏強度、意識、心跳。</span></li>
+    <li><b>2</b><span><span class="k">快不代表沒事</span>CRT 正常 ≠ 沒休克，敏感度只有三分之一。</span></li>
+    <li><b>3</b><span><span class="k">換地方就換標準</span>手指拿不到（包紮、燒傷、指甲彩繪、掙扎的嬰兒）才退而壓胸骨，此時 2 秒規則不適用，只判「明顯很慢／不慢」，不報秒數。</span></li>
+  </ol>
+  <h3>兩個要改的習慣</h3>
+  <div class="fix">
+    <div>
+      <div><del>壓指甲床</del><span class="to">→</span><ins>改壓指腹</ins></div>
+      <p>文獻標準部位是 distal fingertip 的掌側指腹；指甲床受色素、發紺、按壓力道干擾大。</p>
+    </div>
+    <div>
+      <div><del>把腳掌當常規</del><span class="to">→</span><ins>一般 EMT 課不教</ins></div>
+      <p>正常上限約 4 秒，用 2 秒判會大量誤判；只有新生兒情境才會遇到。</p>
+    </div>
+  </div>
+  <div class="pull"><span class="fire">🔥 </span>少教一個部位，學員就多記住一個標準。</div>
+</div></section>
+
+<section id="formats"><div class="wrap">
+  <h2><span class="n">＋</span>其他版本</h2>
+  <div class="note">
+    <p style="margin:0 0 .6em"><strong><a href="slides.html">簡報版（HTML）</a></strong>——同樣內容的投影片，鍵盤／滑動翻頁，內建講者備忘稿，桌機平板手機都能用。</p>
+    <p style="margin:0"><strong><a href="%E5%85%92%E7%AB%A5CRT%E8%A9%95%E4%BC%B0%E9%83%A8%E4%BD%8D.pptx">PowerPoint 檔（.pptx）</a></strong>——需要自行改內容或加入既有課程時用這個。</p>
+  </div>
+</div></section>
+
+</main>
+
+<footer class="refs" id="refs"><div class="wrap">
+  <h2><span class="n">9</span>參考文獻</h2>
+  <ol>
+    <li>Fleming S, et al. <a href="https://doi.org/10.1136/archdischild-2014-307079" target="_blank" rel="noopener">Validity and reliability of measurement of capillary refill time in children: a systematic review. Arch Dis Child. 2015;100(3):239-49.</a></li>
+    <li>Fleming S, et al. <a href="https://doi.org/10.1371/journal.pone.0138155" target="_blank" rel="noopener">The Diagnostic Value of Capillary Refill Time for Detecting Serious Illness in Children: A Systematic Review and Meta-Analysis. PLoS One. 2015;10(9):e0138155.</a></li>
+    <li>Steiner MJ, et al. <a href="https://doi.org/10.1001/jama.291.22.2746" target="_blank" rel="noopener">Is This Child Dehydrated? JAMA. 2004;291(22):2746-54.</a></li>
+    <li>Gorelick MH, et al. <a href="https://doi.org/10.1542/peds.92.5.699" target="_blank" rel="noopener">Effect of Ambient Temperature on Capillary Refill in Healthy Children. Pediatrics. 1993;92(5):699-702.</a></li>
+    <li>Crook J, Taylor RM. <a href="https://doi.org/10.1136/archdischild-2012-303046" target="_blank" rel="noopener">The agreement of fingertip and sternum capillary refill time in children. Arch Dis Child. 2013;98(4):265-8.</a></li>
+    <li>de Vos-Kerkhof E, et al. <a href="https://doi.org/10.1136/archdischild-2015-308519" target="_blank" rel="noopener">Comparison of peripheral and central capillary refill time in febrile children presenting to a paediatric emergency department. Arch Dis Child. 2017;102(1):17-21.</a></li>
+    <li>Meyer F, et al. <a href="https://doi.org/10.1186/s12873-025-01204-0" target="_blank" rel="noopener">Can we trust naked eye assessments of the capillary refill test in children? An experimental study. BMC Emerg Med. 2025;25(1):48.</a></li>
+  </ol>
+  <p class="src">以 OpenEvidence 檢索（2026-08-17）：兒童 CRT 測量部位／常模／方法學，以及指引門檻與非醫療人員信度。</p>
+</div></footer>
+
+<script>
+(function(){
+  var prog = document.getElementById('prog');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  onScroll();
+
+  var links = [].slice.call(document.querySelectorAll('#toc a'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var i = targets.indexOf(e.target);
+        links.forEach(function(a, k){ a.classList.toggle('on', k === i); });
+      });
+    }, {rootMargin:'-25% 0px -65% 0px'});
+    targets.forEach(function(t){ if (t) io.observe(t); });
+  }
+})();
+</script>
+</body>
+</html>
