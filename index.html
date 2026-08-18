@@ -152,7 +152,9 @@ footer.refs .src{margin-top:1.8em; font-size:.8em; color:#98A0C6}
   #toc{
     display:block; position:fixed; left:clamp(16px,2.5vw,40px); top:50%; transform:translateY(-50%);
     width:12rem; font-size:.78em; line-height:1.5; z-index:40;
+    opacity:0; pointer-events:none; transition:opacity .3s;   /* 捲過封面才出現，避免壓在深色 hero 上 */
   }
+  #toc.show{opacity:1; pointer-events:auto}
   #toc ol{list-style:none; margin:0; padding:0; display:grid; gap:.55em}
   #toc a{display:block; color:var(--muted); text-decoration:none; padding-left:.7em;
          border-left:2px solid var(--line); transition:color .15s, border-color .15s}
@@ -409,6 +411,10 @@ footer.refs .src{margin-top:1.8em; font-size:.8em; color:#98A0C6}
     var h = document.documentElement.scrollHeight - innerHeight;
     prog.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + '%';
   }
+  var toc = document.getElementById('toc'), hero = document.querySelector('header.hero');
+  function tocVis(){ toc.classList.toggle('show', scrollY > hero.offsetHeight - 80); }
+  addEventListener('scroll', function(){ onScroll(); tocVis(); }, {passive:true});
+  addEventListener('resize', tocVis); tocVis();
   addEventListener('scroll', onScroll, {passive:true});
   addEventListener('resize', onScroll);
   onScroll();
